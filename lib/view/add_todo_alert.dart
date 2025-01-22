@@ -131,13 +131,15 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                             }
                           },
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center
                             children: [
                               const Icon(Icons.calendar_month),
                               const SizedBox(
                                 width: 4,
                               ),
                               SizedBox(
-                                width: 100,
+                                width: 120,
                                 child: Center(child: Text(
                                     '${selectedDate.year}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString().padLeft(2, '0')}:${selectedDate.minute.toString().padLeft(2, '0')}', textAlign: TextAlign.center,)),
                               ),
