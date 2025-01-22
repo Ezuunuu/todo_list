@@ -104,6 +104,7 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                       children: [
                         ElevatedButton(
                           onPressed: () async {
+                            // 일자를 정하는 DatePicker
                             final DateTime? picked = await showDatePicker(
                               context: context,
                               initialDate: DateTime.now(),
@@ -111,6 +112,7 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                               lastDate: DateTime(2101),
                             );
 
+                            // 시간을 정하는 TimePicker
                             final pickedTime = await showTimePicker(
                                 context: context, initialTime: TimeOfDay.now());
 
@@ -133,9 +135,9 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                                 width: 4,
                               ),
                               SizedBox(
-                                width: 120,
-                                child: Text(
-                                    '${selectedDate.year}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString().padLeft(2, '0')}:${selectedDate.minute.toString().padLeft(2, '0')}'),
+                                width: 100,
+                                child: Center(child: Text(
+                                    '${selectedDate.year}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString().padLeft(2, '0')}:${selectedDate.minute.toString().padLeft(2, '0')}'),),
                               ),
                             ],
                           ),

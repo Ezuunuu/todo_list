@@ -111,6 +111,7 @@ class TodoListView extends StatelessWidget {
                                           _onDrag(details, listIndex),
                                       builder: (context, candidateData,
                                           rejectedData) {
+                                            // Todo model과 list index를 함께 전달하기 위해 Map으로 리턴
                                         return Draggable<Map>(
                                           data: {
                                             'item': item,

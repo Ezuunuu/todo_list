@@ -2,7 +2,7 @@ import 'package:todo_list/model/manager_model.dart';
 
 class TodoModel {
   TodoModel({
-    required this.pk,
+    required this.pk, // Database에서 받아올 시 사용할 PK
     this.title,
     this.manager,
     this.content,

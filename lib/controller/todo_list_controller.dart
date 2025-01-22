@@ -13,6 +13,7 @@ class TodoListController extends GetxController {
     super.onInit();
   }
 
+  // 더미 데이터 추가
   setTodoGroupModel() {
     ManagerModel manager1 = ManagerModel(
         pk: 0,
@@ -131,6 +132,7 @@ class TodoListController extends GetxController {
     ]);
   }
 
+  // 드래그가 아닌 위 아래로 움직일 때 사용하는 함수
   onReorder(int oldIndex, int newIndex, int listIndex) {
     if (newIndex > oldIndex) newIndex -= 1;
     final item = todoGroup[listIndex].todoList?[oldIndex];
@@ -138,7 +140,8 @@ class TodoListController extends GetxController {
     todoGroup[listIndex].todoList?.insert(newIndex, item!);
     todoGroup.refresh();
   }
-
+  
+  // 위 아래 뿐만 아니라 좌우로 움직일 때 사용하는 함수
   onDrag(TodoModel item, int fromIndex, int toIndex, int? targetIndex) {
     todoGroup[fromIndex].todoList?.remove(item);
     if (targetIndex != null) {
@@ -148,8 +151,9 @@ class TodoListController extends GetxController {
     }
 
     todoGroup.refresh();
-  }
+  } 
 
+  // 생성 함수
   create(TodoModel item, int groupIndex) {
     todoGroup[groupIndex].todoList?.add(item);
   }
@@ -158,6 +162,7 @@ class TodoListController extends GetxController {
   TodoGroupModel get last => todoGroup.last;
   at(int index) => todoGroup[index];
 
+  // todoGroup 아래에 있는 모든 Todo 모델의 숫자를 받아올 수 있는 getter
   int get length =>
       todoGroup.fold(0, (sum, list) => sum + list.todoList!.length);
 }
