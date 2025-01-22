@@ -111,6 +111,8 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                               firstDate: DateTime(2000),
                               lastDate: DateTime(2101),
                             );
+                            // 일자를 정하지 않았다면 TimePicker를 실행하지 않고 종료
+                            if (picked == null) return;
 
                             // 시간을 정하는 TimePicker
                             final pickedTime = await showTimePicker(
@@ -137,7 +139,7 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                               SizedBox(
                                 width: 100,
                                 child: Center(child: Text(
-                                    '${selectedDate.year}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString().padLeft(2, '0')}:${selectedDate.minute.toString().padLeft(2, '0')}'),),
+                                    '${selectedDate.year}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString().padLeft(2, '0')}:${selectedDate.minute.toString().padLeft(2, '0')}', textAlign: TextAlign.center,)),
                               ),
                             ],
                           ),

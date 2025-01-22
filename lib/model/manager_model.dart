@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ManagerModel {
   ManagerModel({
-    required this.pk,
+    required this.pk, // Database에서 받아올 시 사용할 PK
     this.name,
     this.createdAt,
     this.updatedAt,

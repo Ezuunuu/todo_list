@@ -2,7 +2,7 @@ import 'package:todo_list/model/todo_model.dart';
 
 class TodoGroupModel {
   TodoGroupModel({
-    required this.pk,
+    required this.pk, // Database에서 받아올 시 사용할 PK
     this.title,
     this.description,
     this.createdAt,
