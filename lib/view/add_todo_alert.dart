@@ -132,7 +132,7 @@ class _AddTodoAlertState extends State<AddTodoAlert> {
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Icon(Icons.calendar_month),
                               const SizedBox(
