@@ -1,36 +1,36 @@
-name: Deploy Flutter Web App to GitHub Pages
+name: deploy flutter web to github pages
 
+# 1
 on:
   push:
     branches:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      # 1
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        channel: stable
-        flutter-version: 3.10.6 # 사용하는 Flutter 버전으로 변경
+      # 2
+      # https://github.com/marketplace/actions/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.19.0
 
-    - name: Install Dependencies
-      run: flutter pub get
+      # 3
+      - name: Build web
+        run: flutter build web --base-href "/${{ github.event.repository.name }}/"
 
-    - name: Build Web
-      run: flutter build web --release
-
-    - name: Add .nojekyll
-      run: echo > build/web/.nojekyll
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.TODO_LIST_SECRET_KEY }} # repository에서 사용할 시크릿 키 이름
-        publish_dir: build/web
-        publish_branch: gh-pages
+      # 4
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.STATIC_DEPLOY_KEY }}
+          publish_dir: ./build/web
